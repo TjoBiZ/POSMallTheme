@@ -1,0 +1,141 @@
+url = "/posmall/login"
+title = "Sign in"
+layout = "posmall"
+
+[authentication]
+rememberMe = "ask"
+twoFactorAuth = 1
+recoverPassword = 1
+
+[session]
+security = "guest"
+redirect = "posmall-account"
+==
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-6 col-xl-5">
+        <div class="mb-4 text-center">
+            <h1 class="h2 mb-2">Sign in</h1>
+            <p class="text-body-secondary mb-0">Access orders, saved addresses, profile details, and Favorites.</p>
+        </div>
+
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                {% if authentication.showLoginForm %}
+                    <div>
+                        <form method="post"
+                              data-request="onLogin"
+                              data-request-flash
+                              data-request-success="window.POSMallAuthRedirect && window.POSMallAuthRedirect(data, this)">
+                            {{ form_token() }}
+                            <input type="hidden" name="redirect" value="{{ 'posmall-account'|page }}" />
+
+                            {% if authentication.showUsernameField %}
+                                <div class="form-floating my-3">
+                                    <input
+                                        name="username"
+                                        type="text"
+                                        class="form-control"
+                                        id="inputUsername"
+                                        placeholder="Username"
+                                    />
+                                    <label for="inputUsername">Username</label>
+                                </div>
+                            {% else %}
+                                <div class="form-floating my-3">
+                                    <input
+                                        name="email"
+                                        type="email"
+                                        class="form-control"
+                                        id="inputEmail"
+                                        placeholder="name@example.com"
+                                    />
+                                    <label for="inputEmail">Email address</label>
+                                </div>
+                            {% endif %}
+
+                            <div class="form-floating my-3">
+                                <input
+                                    name="password"
+                                    type="password"
+                                    class="form-control"
+                                    id="inputPassword"
+                                    placeholder="Password"
+                                />
+                                <label for="inputPassword">Password</label>
+                            </div>
+
+                            {% if authentication.showRememberMe %}
+                                <div class="form-check mb-3">
+                                    <input
+                                        name="remember"
+                                        type="checkbox"
+                                        class="form-check-input"
+                                        id="inputRemember"
+                                        checked
+                                    />
+                                    <label class="form-check-label" for="inputRemember">
+                                        Remember me
+                                    </label>
+                                </div>
+                            {% endif %}
+
+                            <button
+                                class="btn btn-primary btn-lg w-100"
+                                data-attach-loading
+                                type="submit">
+                                Sign in
+                            </button>
+                        </form>
+
+                        <div class="d-flex flex-wrap justify-content-between gap-2 mt-4">
+                            {% if authentication.canRegister %}
+                                <a href="{{ 'posmall-register'|page }}">Create account</a>
+                            {% endif %}
+
+                            {% if authentication.usePasswordRecovery %}
+                                <a href="{{ 'posmall-reset-password'|page }}">
+                                    Recover password
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if authentication.showTwoFactorChallenge %}
+                    <div class="collapse show two-factor-collapse">
+                        <form method="post"
+                              data-request="onTwoFactorChallenge"
+                              data-request-flash
+                              data-request-success="window.POSMallAuthRedirect && window.POSMallAuthRedirect(data, this)">
+                            {{ form_token() }}
+                            <input type="hidden" name="redirect" value="{{ 'posmall-account'|page }}" />
+
+                            <div class="mb-3 text-center">
+                                <h2 class="h4 mb-1">Two-factor authentication</h2>
+                                <p class="text-body-secondary mb-0">Enter the code from your authenticator app.</p>
+                            </div>
+
+                            <div class="form-floating my-3">
+                                <input
+                                    name="code"
+                                    type="text"
+                                    class="form-control"
+                                    id="inputTwoFactorCode"
+                                    placeholder="123456"
+                                />
+                                <label for="inputTwoFactorCode">Authentication code</label>
+                            </div>
+
+                            <button
+                                class="btn btn-primary btn-lg w-100"
+                                data-attach-loading
+                                type="submit">
+                                Verify
+                            </button>
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

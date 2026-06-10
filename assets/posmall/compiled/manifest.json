@@ -1,0 +1,25 @@
+{
+    "generated_at": "2026-06-10T02:48:55+00:00",
+    "builder": "laravel-mix",
+    "message": "Compiled with Laravel Mix.",
+    "assets": {
+        "css": {
+            "source": "assets/posmall/css/storefront.css",
+            "compiled": "assets/posmall/compiled/css/storefront.min.css",
+            "status": "optimized",
+            "source_bytes": 27945,
+            "compiled_bytes": 21781,
+            "gzip_bytes": 5103,
+            "version": "d561c8681fc2"
+        },
+        "js": {
+            "source": "assets/posmall/js/storefront.js",
+            "compiled": "assets/posmall/compiled/js/storefront.min.js",
+            "status": "optimized",
+            "source_bytes": 73825,
+            "compiled_bytes": 33793,
+            "gzip_bytes": 8795,
+            "version": "f68f3e8bd6e9"
+        }
+    }
+}

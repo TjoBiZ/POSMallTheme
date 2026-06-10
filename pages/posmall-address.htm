@@ -1,0 +1,26 @@
+url = "/posmall/address/:address?/:redirect?/:set?"
+title = "Address"
+layout = "posmall"
+
+[session]
+security = "user"
+redirect = "posmall-login"
+
+[posmallAddressForm]
+address = "{{ :address }}"
+redirect = "{{ :redirect }}"
+set = "{{ :set }}"
+==
+<section class="mall-storefront-page mall-storefront-page--address">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
+        <div>
+            <h1 class="h3 mb-1">{{ 'kodzero.posmall::frontend.address'|trans }}</h1>
+            <p class="text-muted mb-0">{{ 'kodzero.posmall::frontend.address.form.lead'|trans }}</p>
+        </div>
+        <a href="{{ 'posmall-account'|page({ page: 'addresses' }) }}" class="btn btn-outline-secondary">
+            {{ 'kodzero.posmall::frontend.addresses'|trans }}
+        </a>
+    </div>
+
+    {% component 'posmallAddressForm' %}
+</section>

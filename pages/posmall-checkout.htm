@@ -1,0 +1,39 @@
+url = "/posmall/checkout/:step?"
+title = "POSMall Checkout"
+layout = "posmall"
+
+[posmallSignUp]
+redirect = "/posmall/checkout"
+
+[session]
+security = "all"
+
+[posmallCheckout]
+step = "{{ :step }}"
+showNotesField = true
+==
+<section class="mall-storefront-page mall-storefront-page--checkout">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
+        <div>
+            <h1 class="h3 mb-1">{{ 'kodzero.posmall::frontend.checkout'|trans }}</h1>
+            <p class="text-muted mb-0">{{ 'kodzero.posmall::frontend.checkout.subtitle'|trans }}</p>
+        </div>
+        <a href="{{ 'posmall-cart'|page }}" class="btn btn-outline-secondary">
+            {{ 'kodzero.posmall::frontend.cart'|trans }}
+        </a>
+    </div>
+
+    {% if not user %}
+        <div class="alert alert-info mb-3">
+            <strong>Choose how to continue.</strong>
+            Sign in, register a new account, or continue as guest.
+        </div>
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                {% component 'posmallSignUp' %}
+            </div>
+        </div>
+    {% else %}
+        {% component 'posmallCheckout' %}
+    {% endif %}
+</section>

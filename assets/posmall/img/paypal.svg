@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="40" viewBox="0 0 128 40" role="img" aria-labelledby="paypalTitle">
+  <title id="paypalTitle">PayPal</title>
+  <rect width="128" height="40" rx="6" fill="#fff"/>
+  <text x="24" y="27" fill="#003087" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="0">Pay</text>
+  <text x="62" y="27" fill="#009cde" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="0">Pal</text>
+</svg>

@@ -1,0 +1,152 @@
+url = "/"
+layout = "posmall"
+title = "POSMall Demo Store"
+meta_description = "POSMall demo storefront with a PostgreSQL-backed catalog, product properties, services, cart, checkout, and account flows."
+==
+<section class="posmall-home-hero" aria-label="POSMall demo storefront video hero">
+    <img
+        class="posmall-home-hero__poster"
+        src="{{ 'assets/posmall/img/wings-demo/purple-wings-shawl.jpg'|theme }}"
+        alt="Purple wing scarf from the POSMall demo catalog"
+    >
+
+    <iframe
+        class="posmall-home-hero__video"
+        src="https://www.youtube-nocookie.com/embed/TRjsqKnScH0?autoplay=1&mute=1&controls=0&loop=1&playlist=TRjsqKnScH0&playsinline=1&modestbranding=1&rel=0&iv_load_policy=3&disablekb=1&fs=0"
+        title="POSMall demo catalog background video"
+        allow="autoplay; encrypted-media; picture-in-picture"
+        tabindex="-1"
+        aria-hidden="true"
+    ></iframe>
+
+    <div class="posmall-home-hero__content">
+        <p class="posmall-home-eyebrow">PostgreSQL-first commerce backend</p>
+        <h1>POSMall demo catalog</h1>
+        <p class="posmall-home-hero__copy">
+            A live storefront shell for products, variants, flexible properties, services, cart, checkout, orders, and account flows.
+        </p>
+        <div class="posmall-home-actions">
+            <a class="posmall-home-button posmall-home-button--primary" href="{{ 'posmall-catalog'|page }}">Browse catalog</a>
+            {% if posmallHasServices|default(false) %}
+                <a class="posmall-home-button" href="{{ 'posmall-services'|page }}">View services</a>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="posmall-home-section">
+    <div class="posmall-home-section__inner">
+        <div class="posmall-home-section__title">
+            <h2>Seeded storefront content</h2>
+            <p>
+                The home page uses the same demo direction as the POSMall seed catalog: visual product storytelling backed by structured commerce data.
+            </p>
+        </div>
+
+        <div class="posmall-home-lookbook">
+            <a class="posmall-home-look-card posmall-home-look-card--large" href="{{ 'posmall-catalog'|page }}" aria-label="Open product catalog">
+                <img
+                    src="{{ 'assets/posmall/img/wings-demo/BlueAngelWingsScarfs.jpg'|theme }}"
+                    alt="Blue angel wings scarf"
+                    loading="lazy"
+                >
+                <figcaption>Products with images, prices, properties, and categories</figcaption>
+            </a>
+            <div class="posmall-home-look-stack">
+                {% if posmallHasServices|default(false) %}
+                    <a class="posmall-home-look-card" href="{{ 'posmall-services'|page }}" aria-label="Open services">
+                        <img
+                            src="{{ 'assets/posmall/img/wings-demo/orange-scarf-wings.jpg'|theme }}"
+                            alt="Orange wings scarf"
+                            loading="lazy"
+                        >
+                        <figcaption>Services and selectable service options</figcaption>
+                    </a>
+                {% endif %}
+                <a class="posmall-home-look-card" href="{{ 'posmall-search'|page }}" aria-label="Open product search">
+                    <img
+                        src="{{ 'assets/posmall/img/wings-demo/wings-bird.jpg'|theme }}"
+                        alt="Bird wing scarf"
+                        loading="lazy"
+                    >
+                    <figcaption>Search, filters, and property-driven catalog pages</figcaption>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="posmall-home-section posmall-home-story">
+    <div class="posmall-home-section__inner posmall-home-story__grid">
+        <img
+            src="{{ 'assets/posmall/img/wings-demo/WhiteAngelWings.jpg'|theme }}"
+            alt="White angel wings scarf"
+            loading="lazy"
+        >
+        <div>
+            <p class="posmall-home-eyebrow">Backend and theme are separate</p>
+            <h2>One backend, many storefronts.</h2>
+            <p>
+                POSMall keeps product data, filters, prices, cart, checkout, orders, services, and account behavior in the backend plugin.
+                The theme decides how the storefront looks.
+            </p>
+            <p>
+                This page is a cleaned POSMall demo front page, not a personal service-site landing page.
+            </p>
+            <a class="posmall-home-button posmall-home-button--dark" href="{{ 'posmall-catalog'|page }}">Open catalog</a>
+        </div>
+    </div>
+</section>
+
+<section class="posmall-home-section">
+    <div class="posmall-home-section__inner">
+        <div class="posmall-home-section__title">
+            <h2>Shop flows</h2>
+            <p>Fast paths into the backend capabilities that matter for the demo store.</p>
+        </div>
+
+        <div class="posmall-home-tiles">
+            <a class="posmall-home-tile" href="{{ 'posmall-catalog'|page }}">
+                <b>Catalog</b>
+                <span>Products, variants, images, prices, filters, and sorting.</span>
+            </a>
+            {% if posmallHasServices|default(false) %}
+                <a class="posmall-home-tile" href="{{ 'posmall-services'|page }}">
+                    <b>Services</b>
+                    <span>Standalone service products and selectable service options.</span>
+                </a>
+            {% endif %}
+            <a class="posmall-home-tile" href="{{ 'posmall-cart'|page }}">
+                <b>Cart</b>
+                <span>Quantities, custom fields, service options, discounts, and totals.</span>
+            </a>
+            <a class="posmall-home-tile" href="{{ 'posmall-account'|page }}">
+                <b>Account</b>
+                <span>Customer profile, addresses, order history, and wishlists.</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="posmall-home-subfooter" aria-label="POSMall platform summary">
+    <div class="posmall-home-subfooter__inner">
+        <div>
+            <h2>Built for real catalog data</h2>
+            <p>PostgreSQL index, flexible properties, category-aware filters, services, checkout, and October CMS components.</p>
+        </div>
+        <nav class="posmall-home-socials" aria-label="Solar Neutrino links">
+            <a class="posmall-home-social" href="https://solarneutrino.com" aria-label="Solar Neutrino website">
+                <span>SN</span>
+            </a>
+            <a class="posmall-home-social" href="https://solarneutrino.com" aria-label="Solar Neutrino commerce">
+                <span>$</span>
+            </a>
+            <a class="posmall-home-social" href="https://solarneutrino.com" aria-label="Solar Neutrino catalog">
+                <span>AI</span>
+            </a>
+            <a class="posmall-home-social" href="https://solarneutrino.com" aria-label="Solar Neutrino platform">
+                <span>DB</span>
+            </a>
+        </nav>
+    </div>
+</section>

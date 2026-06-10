@@ -1,0 +1,94 @@
+url = "/posmall/category/:slug*"
+title = "POSMall Category"
+layout = "posmall"
+
+[posmallProducts]
+category = ":slug"
+setPageTitle = 1
+includeVariants = 0
+includeChildren = 1
+perPage = 9
+
+[posmallProductsFilter]
+category = ":slug"
+showPriceFilter = 1
+
+[posmallProductSearch]
+==
+<?php
+function onStart()
+{
+    if (trim((string) $this->param('slug'), '/') === '') {
+        return redirect('/posmall/catalog');
+    }
+}
+?>
+==
+<div class="row">
+    <div class="col-12 col-md-4 col-lg-3 mb-4">
+        {# Hot-path inline render; component alias remains registered for onSetFilter AJAX. #}
+        <form class="mall-products-filter card shadow-sm border-0 p-3 mb-4"
+              data-posmall-products-filter
+              data-component-alias="posmallProductsFilter"
+              data-posmall-filter-error-message="{{ 'kodzero.posmall::frontend.search_error'|trans }}">
+            {{ posmallProductsFilter.filterMarkup()|raw }}
+        </form>
+    </div>
+
+    <div class="col-12 col-md-8 col-lg-9">
+        {% if posmallProducts.category %}
+            <div class="mb-4">
+                {% if posmallProducts.category.image %}
+                    {% set categoryImage = posmall_image_sources(posmallProducts.category.image, posmallProducts.category.image.title|default(posmallProducts.category.name), 'product') %}
+                    {% set categoryImageSrc = categoryImage ? categoryImage.jpeg : (posmallProducts.category.image.extension|default('') == 'svg' ? posmallProducts.category.image.path : posmallProducts.category.image.thumb(960, 360, null)) %}
+                    <picture>
+                        {% if categoryImage and categoryImage.webp %}
+                            <source srcset="{{ categoryImage.webp }}" type="image/webp">
+                        {% endif %}
+                        <img src="{{ categoryImageSrc }}"
+                             class="img-fluid rounded border bg-body-tertiary mb-3"
+                             alt="{{ categoryImage ? categoryImage.alt : posmallProducts.category.image.title|default(posmallProducts.category.name) }}">
+                    </picture>
+                {% endif %}
+                <h1 class="h3 mb-2">{{ posmallProducts.category.name }}</h1>
+                {% if posmallProducts.category.description_short %}
+                    <p class="lead text-muted mb-2">{{ posmallProducts.category.description_short|nl2br }}</p>
+                {% endif %}
+                {% if posmallProducts.category.description %}
+                    <div class="mall-category-description mb-0">
+                        {{ posmallProducts.category.description|raw }}
+                    </div>
+                {% endif %}
+            </div>
+        {% else %}
+            <h1 class="h3 mb-4">Catalog</h1>
+        {% endif %}
+
+        <div class="posmall-listing__toolbar">
+            {# Hot-path inline render; component alias remains registered for onSuggest AJAX. #}
+            <div class="posmall-search mb-4" data-posmall-search data-component-alias="posmallProductSearch">
+                <form action="{{ 'posmall-search'|page }}" method="get" data-posmall-search-form>
+                    <label class="visually-hidden" for="posmall-product-search">
+                        {{ 'kodzero.posmall::frontend.search.label'|trans }}
+                    </label>
+                    <div class="input-group">
+                        <input id="posmall-product-search"
+                               class="form-control"
+                               type="search"
+                               name="q"
+                               value="{{ posmallProductSearch.query }}"
+                               autocomplete="off"
+                               data-posmall-search-input
+                               placeholder="{{ 'kodzero.posmall::frontend.search.placeholder'|trans }}">
+                        <button class="btn btn-primary" type="submit">
+                            {{ 'kodzero.posmall::frontend.search.submit'|trans }}
+                        </button>
+                    </div>
+                </form>
+                <div class="posmall-search__suggestions" data-posmall-search-suggestions></div>
+            </div>
+        </div>
+
+        {% component 'posmallProducts' %}
+    </div>
+</div>

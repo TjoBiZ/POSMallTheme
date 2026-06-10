@@ -1,0 +1,9 @@
+{
+    "name": "kodzero/posmalltheme-theme",
+    "type": "october-theme",
+    "description": "SEO-ready October CMS storefront theme for the KodZero POSMall PostgreSQL eCommerce plugin with catalog, services, virtual products, cart, checkout, accounts, payment links and PageSpeed-ready assets.",
+    "license": "proprietary",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}

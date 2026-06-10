@@ -1,0 +1,21 @@
+url = "/posmall/services"
+title = "POSMall Services"
+layout = "posmall"
+
+[posmallServices]
+servicePage = "posmall-service"
+cartPage = "posmall-cart"
+==
+<?php
+function onStart()
+{
+    $this->page->meta_description = 'Browse standalone POSMall services and add service options to the posmallCart.';
+}
+?>
+==
+<div class="mb-4">
+    <h1 class="h3 mb-2">POSMall Services</h1>
+    <p class="text-muted mb-0">Choose installation and setup services as separate cart items.</p>
+</div>
+
+{% component 'posmallServices' %}

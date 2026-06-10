@@ -1,0 +1,63 @@
+url = "/posmall/payment-link/:hash"
+title = "Pay order"
+layout = "posmall"
+
+[posmallPaymentMethodSelector]
+==
+{% set order = posmallPaymentMethodSelector.order %}
+{% set orderHash = order ? (order.hash_id|default(order.hashId|default(this.param.hash))) : this.param.hash %}
+
+<section class="mall-storefront-page mall-storefront-page--payment-link">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
+        <div>
+            <h1 class="h3 mb-1">{{ 'kodzero.posmall::frontend.order_pay.title'|trans }}</h1>
+            <p class="text-muted mb-0">{{ 'kodzero.posmall::frontend.order_pay.lead'|trans }}</p>
+        </div>
+    </div>
+
+    {% if order and posmallPaymentMethodSelector.canPayOrder %}
+        <div class="row g-4">
+            <div class="col-12 col-lg-5">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body">
+                        <h2 class="h5 mb-3">{{ 'kodzero.posmall::frontend.order_pay.summary'|trans }}</h2>
+                        <dl class="row mb-0">
+                            <dt class="col-sm-5">{{ 'kodzero.posmall::frontend.order_number'|trans }}</dt>
+                            <dd class="col-sm-7">{{ order.order_number ?: orderHash }}</dd>
+
+                            <dt class="col-sm-5">{{ 'kodzero.posmall::frontend.order.payment_state'|trans }}</dt>
+                            <dd class="col-sm-7">
+                                <span class="badge text-bg-warning">{{ order.payment_state_label }}</span>
+                            </dd>
+
+                            <dt class="col-sm-5">{{ 'kodzero.posmall::frontend.grand_total'|trans }}</dt>
+                            <dd class="col-sm-7">{{ order.totalPostTaxes()|raw }}</dd>
+                        </dl>
+
+                        <h3 class="h6 mt-4 mb-2">{{ 'kodzero.posmall::frontend.order_pay.items'|trans }}</h3>
+                        {% if order.products|length %}
+                            <ul class="list-unstyled small mb-0">
+                                {% for item in order.products|slice(0, 3) %}
+                                    <li class="d-flex justify-content-between gap-3 py-1 border-top">
+                                        <span>{{ item.name }}</span>
+                                        <span class="text-muted flex-shrink-0">x {{ item.quantity }}</span>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p class="small text-muted mb-0">{{ 'kodzero.posmall::frontend.order_pay.no_items'|trans }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-7">
+                {% component 'posmallPaymentMethodSelector' %}
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-warning">
+            {{ posmallPaymentMethodSelector.paymentUnavailableMessage|default('kodzero.posmall::frontend.payment_method.order_not_payable'|trans) }}
+        </div>
+    {% endif %}
+</section>

@@ -1,0 +1,17 @@
+url = "/posmall/register"
+title = "Registration"
+layout = "posmall"
+
+[posmallSignUp]
+redirect = "/posmall/account"
+
+[session]
+security = "guest"
+redirect = "posmall-account"
+==
+<div class="mb-4">
+    <h1 class="h2 mb-2">Create account</h1>
+    <p class="text-body-secondary mb-0">Register once to manage addresses, orders, and Favorites.</p>
+</div>
+
+{% component 'posmallSignUp' %}

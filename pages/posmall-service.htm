@@ -1,0 +1,10 @@
+url = "/posmall/services/:slug"
+title = "POSMall Service"
+layout = "posmall"
+
+[posmallServices]
+service = "{{ :slug }}"
+servicePage = "posmall-service"
+cartPage = "posmall-cart"
+==
+{% component 'posmallServices' %}
