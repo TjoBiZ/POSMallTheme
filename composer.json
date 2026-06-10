@@ -5,5 +5,33 @@
     "license": "proprietary",
     "require": {
         "composer/installers": "~1.0"
+    },
+    "keywords": [
+        "october",
+        "octobercms",
+        "theme",
+        "ecommerce",
+        "storefront",
+        "posmall",
+        "postgresql",
+        "laravel",
+        "shop",
+        "catalog",
+        "checkout"
+    ],
+    "authors": [
+        {
+            "name": "KodZero",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "source": "https://github.com/TjoBiZ/POSMallTheme",
+        "issues": "https://\n  github.com/TjoBiZ/POSMallTheme/issues"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-main": "1.0-dev"
+        }
     }
 }

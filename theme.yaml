@@ -2,7 +2,7 @@ name: 'POSMall Theme - PostgreSQL eCommerce Storefront for October CMS'
 description: 'POSMall Theme is the companion October CMS storefront for the KodZero POSMall eCommerce plugin. It provides SEO-ready catalog, product, service, virtual product, cart, checkout, account, payment-link and PageSpeed-optimized storefront pages for PostgreSQL-backed Laravel commerce projects.'
 author: 'KodZero'
 homepage: 'https://github.com/TjoBiZ/POSMallTheme'
-authorCode: kodzero
+authorCode: KodZero
 code: posmalltheme
 parent: ''
 database: '0'
