@@ -1,11 +1,37 @@
 # POSMall Theme - October CMS Storefront for the POSMall eCommerce Plugin
 
+![POSMall Theme PostgreSQL eCommerce storefront for October CMS](docs/marketplace/assets/posmall-theme-banner-837x348.png)
+
 POSMall Theme is the companion October CMS storefront theme for the KodZero POSMall eCommerce plugin. It is designed for PostgreSQL-backed Laravel commerce projects that need a practical storefront for product catalogs, point-of-sale workflows, services, virtual products, cart, checkout, customer accounts, payment links and optimized storefront assets.
 
+- October CMS Marketplace theme page: <https://octobercms.com/theme/kodzero-posmalltheme>
+- October CMS Marketplace plugin page: <https://octobercms.com/plugin/kodzero-posmall>
 - POSMall Theme repository: <https://github.com/TjoBiZ/POSMallTheme>
 - POSMall eCommerce plugin repository: <https://github.com/TjoBiZ/POSMall>
 
 Install the POSMall plugin first. The theme uses the plugin's October CMS components, pages, routes, image helpers, cart logic, checkout flow, service catalog logic, virtual product support, customer account flows and storefront optimization settings.
+
+## Storefront Screenshots
+
+| Search | Catalog filters |
+| --- | --- |
+| ![POSMall Theme search results](docs/marketplace/screenshots/frontend/01-posmall-theme-search-results.jpg) | ![POSMall Theme catalog filters](docs/marketplace/screenshots/frontend/02-posmall-theme-catalog-filters-products.jpg) |
+
+| Product detail | Services |
+| --- | --- |
+| ![POSMall Theme product detail](docs/marketplace/screenshots/frontend/03-posmall-theme-product-detail.jpg) | ![POSMall Theme services catalog](docs/marketplace/screenshots/frontend/04-posmall-theme-services-catalog.jpg) |
+
+![POSMall Theme service detail](docs/marketplace/screenshots/frontend/05-posmall-theme-service-detail.jpg)
+
+## Customer Flow Screenshots
+
+| Favorites and login | Cart |
+| --- | --- |
+| ![POSMall Theme favorites and sign in](docs/marketplace/screenshots/desktop/01-posmall-desktop-favorites-signin.jpg) | ![POSMall Theme cart](docs/marketplace/screenshots/desktop/02-posmall-desktop-cart.jpg) |
+
+| Checkout registration | Account registration |
+| --- | --- |
+| ![POSMall Theme checkout registration](docs/marketplace/screenshots/desktop/03-posmall-desktop-checkout-registration.jpg) | ![POSMall Theme registration](docs/marketplace/screenshots/desktop/04-posmall-desktop-registration.jpg) |
 
 ## What This Theme Provides
 
@@ -38,26 +64,25 @@ Install the POSMall plugin and the companion theme through Composer:
 ```bash
 cd /path/to/octobercms
 
-composer config repositories.posmall '{"type":"vcs","url":"https://github.com/TjoBiZ/POSMall.git","no-api":true}'
-composer config repositories.posmall-theme '{"type":"vcs","url":"https://github.com/TjoBiZ/POSMallTheme.git","no-api":true}'
-
-composer require kodzero/posmall-plugin:dev-main kodzero/posmalltheme-theme:dev-main -W --prefer-source --no-interaction
+composer require kodzero/posmall-plugin kodzero/posmalltheme-theme -W
 
 php artisan october:migrate
+php artisan theme:use kodzero-posmalltheme --force
 php artisan cache:clear
 php artisan config:clear
 php artisan route:clear
 php artisan view:clear
 ```
 
-The `no-api` repository setting makes Composer clone the public GitHub repositories directly over
-HTTPS instead of calling the GitHub API. The `--prefer-source` option avoids GitHub zip extraction
-edge cases on servers with restrictive filesystem permissions.
-
 The POSMall plugin migration creates the baseline commerce settings required for a clean
 installation. POSMall uses USD as the default currency after installation.
 
 Activate the theme from the October CMS backend or with the October CMS theme tools available in your project.
+
+Marketplace pages:
+
+- Theme: <https://octobercms.com/theme/kodzero-posmalltheme>
+- Plugin: <https://octobercms.com/plugin/kodzero-posmall>
 
 ## Quick Demo Catalog / Test Products
 
@@ -111,14 +136,32 @@ composer config --unset repositories.posmall-local || true
 composer config --unset repositories.posmall-theme-local || true
 
 composer clear-cache
+composer require kodzero/posmall-plugin kodzero/posmalltheme-theme -W
+
+composer dump-autoload
+php artisan october:migrate
+php artisan theme:use kodzero-posmalltheme --force
+php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+```
+
+## Development Source Install
+
+Use direct GitHub VCS repositories only for local development, release verification, or unreleased
+`main` branch testing before the October Marketplace package has been rebuilt.
+
+```bash
+cd /path/to/octobercms
 
 composer config repositories.posmall '{"type":"vcs","url":"https://github.com/TjoBiZ/POSMall.git","no-api":true}'
 composer config repositories.posmall-theme '{"type":"vcs","url":"https://github.com/TjoBiZ/POSMallTheme.git","no-api":true}'
 
 composer require kodzero/posmall-plugin:dev-main kodzero/posmalltheme-theme:dev-main -W --prefer-source --no-interaction
 
-composer dump-autoload
 php artisan october:migrate
+php artisan theme:use kodzero-posmalltheme --force
 php artisan cache:clear
 php artisan config:clear
 php artisan route:clear
