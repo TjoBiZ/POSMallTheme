@@ -67,7 +67,7 @@ function onStart()
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom {{ this.page.url == '/' ? 'posmall-navbar--home' : 'mb-4' }}">
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom posmall-site-navbar {{ this.page.url == '/' ? 'posmall-navbar--home' : '' }}">
     <div class="container">
         <button class="posmall-menu-toggle" type="button" data-posmall-menu-toggle aria-controls="posmallNavbar" aria-expanded="false" aria-label="Open menu">
             <span aria-hidden="true"></span>
@@ -87,7 +87,7 @@ function onStart()
                 <svg aria-hidden="true" focusable="false" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 14.25l-.58-.53C2.28 9.06 1 7.9 1 5.1 1 2.82 2.79 1 5.05 1c1.28 0 2.51.6 3.31 1.55C9.16 1.6 10.39 1 11.67 1 13.93 1 15.72 2.82 15.72 5.1c0 2.8-1.28 3.96-6.42 8.62L8 14.25zM11.67 2.33c-.99 0-1.95.47-2.56 1.22h-.75C7.75 2.8 6.79 2.33 5.8 2.33 4.27 2.33 2.67 3.55 2.67 5.1c0 2.06.95 2.92 5.33 6.91 4.38-3.99 5.33-4.85 5.33-6.91 0-1.55-1.6-2.77-3.13-2.77z"/>
                 </svg>
-                <span class="posmall-icon-badge badge rounded-pill bg-danger" data-posmall-favorites-count>
+                <span class="posmall-icon-badge badge rounded-pill bg-danger {{ posmallFavoritesQuantity|default(0) > 0 ? '' : 'd-none' }}" data-posmall-favorites-count>
                     {{ posmallFavoritesQuantity|default(0) }}
                 </span>
             </a>
