@@ -1,3 +1,12 @@
+:root {
+    --posmall-navbar-height: 4rem;
+    --posmall-navbar-offset: var(--posmall-navbar-height, 4rem);
+}
+
+html {
+    scroll-padding-top: calc(var(--posmall-navbar-offset, 4rem) + 1rem);
+}
+
 .posmall-site-navbar {
     left: 0;
     min-height: var(--posmall-navbar-height, 4rem);
@@ -12,7 +21,15 @@
 }
 
 body {
-    padding-top: var(--posmall-navbar-height, 4rem);
+    padding-top: 0;
+}
+
+body.posmall-page-default {
+    padding-top: var(--posmall-navbar-offset, var(--posmall-navbar-height, 4rem));
+}
+
+body.posmall-page-home {
+    padding-top: 0;
 }
 
 .posmall-nav-link {
@@ -141,7 +158,7 @@ body > main.container {
     background: #101722;
     color: #fff;
     display: grid;
-    min-height: calc(100svh - 4.25rem);
+    min-height: 100svh;
     overflow: hidden;
     position: relative;
 }
@@ -1230,9 +1247,15 @@ body > main.container {
 @media (max-width: 991.98px) {
     :root {
         --posmall-navbar-height: 3.75rem;
+        --posmall-navbar-offset: var(--posmall-navbar-height, 3.75rem);
     }
 
-    body {
+    html {
+        scroll-padding-top: 0;
+    }
+
+    body.posmall-page-default,
+    body.posmall-page-home {
         padding-top: 0;
     }
 

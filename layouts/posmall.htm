@@ -65,7 +65,7 @@ function onStart()
     {% endif %}
 
 </head>
-<body>
+<body class="{{ this.page.url == '/' ? 'posmall-page-home' : 'posmall-page-default' }}">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom posmall-site-navbar {{ this.page.url == '/' ? 'posmall-navbar--home' : '' }}">
     <div class="container">

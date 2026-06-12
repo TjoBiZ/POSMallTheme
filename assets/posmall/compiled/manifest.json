@@ -1,25 +1,25 @@
 {
-    "generated_at": "2026-06-11T21:58:46.680Z",
-    "builder": "clean-css-terser",
-    "message": "Compiled from POSMall theme source assets.",
+    "generated_at": "2026-06-12T00:54:18+00:00",
+    "builder": "laravel-mix",
+    "message": "Compiled with Laravel Mix.",
     "assets": {
         "css": {
             "source": "assets/posmall/css/storefront.css",
             "compiled": "assets/posmall/compiled/css/storefront.min.css",
             "status": "optimized",
-            "source_bytes": 30013,
-            "compiled_bytes": 23269,
-            "gzip_bytes": 5357,
-            "version": "cae700bcc7c7"
+            "source_bytes": 30490,
+            "compiled_bytes": 23711,
+            "gzip_bytes": 5429,
+            "version": "e5046d66c621"
         },
         "js": {
             "source": "assets/posmall/js/storefront.js",
             "compiled": "assets/posmall/compiled/js/storefront.min.js",
             "status": "optimized",
-            "source_bytes": 74336,
-            "compiled_bytes": 33273,
-            "gzip_bytes": 8599,
-            "version": "1827afc5252b"
+            "source_bytes": 74812,
+            "compiled_bytes": 34238,
+            "gzip_bytes": 8944,
+            "version": "4d3c2c6422d3"
         }
     }
 }

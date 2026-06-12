@@ -2,3 +2,5 @@ v1.0.0:
     - Initial public POSMall theme release for October CMS.
 v1.0.1:
     - Improve mobile floating navigation and homepage video cover behavior.
+v1.0.2:
+    - Keep fixed desktop navigation from covering page content.

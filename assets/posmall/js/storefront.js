@@ -262,11 +262,29 @@
         document.body.classList.toggle('posmall-floating-actions-scrolled', window.scrollY > 6);
     }
 
+    function updateNavbarOffset() {
+        var navbar = document.querySelector('.posmall-site-navbar');
+
+        if (!navbar) {
+            return;
+        }
+
+        var height = Math.ceil(navbar.getBoundingClientRect().height);
+
+        if (height > 0) {
+            document.documentElement.style.setProperty('--posmall-navbar-offset', height + 'px');
+        }
+    }
+
     function initFloatingActions() {
+        updateNavbarOffset();
         updateFloatingActionState();
 
         window.addEventListener('scroll', updateFloatingActionState, { passive: true });
-        window.addEventListener('resize', updateFloatingActionState);
+        window.addEventListener('resize', function () {
+            updateNavbarOffset();
+            updateFloatingActionState();
+        });
     }
 
     function updateCartCount(data) {
