@@ -1,10 +1,11 @@
 :root {
     --posmall-navbar-height: 4rem;
     --posmall-navbar-offset: var(--posmall-navbar-height, 4rem);
+    --posmall-page-top-gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 html {
-    scroll-padding-top: calc(var(--posmall-navbar-offset, 4rem) + 1rem);
+    scroll-padding-top: calc(var(--posmall-navbar-offset, 4rem) + var(--posmall-page-top-gap, 1rem));
 }
 
 .posmall-site-navbar {
@@ -139,6 +140,7 @@ body.posmall-page-home {
 
 body > main.container {
     overflow-x: clip;
+    padding-top: var(--posmall-page-top-gap, 1rem);
 }
 
 .posmall-navbar--home {
@@ -1248,6 +1250,7 @@ body > main.container {
     :root {
         --posmall-navbar-height: 3.75rem;
         --posmall-navbar-offset: var(--posmall-navbar-height, 3.75rem);
+        --posmall-page-top-gap: .875rem;
     }
 
     html {
